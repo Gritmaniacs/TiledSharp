@@ -26,6 +26,7 @@ namespace TiledSharp
         public int? NextObjectID {get; private set;}
 
         public TmxList<TmxTileset> Tilesets {get; private set;}
+        public TmxList<TmxTemplateGroup> TemplateGroups { get; private set; }
         public TmxList<TmxLayer> Layers {get; private set;}
         public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
         public TmxList<TmxImageLayer> ImageLayers {get; private set;}
@@ -112,6 +113,10 @@ namespace TiledSharp
             Tilesets = new TmxList<TmxTileset>();
             foreach (var e in xMap.Elements("tileset"))
                 Tilesets.Add(new TmxTileset(e, TmxDirectory));
+
+            TemplateGroups = new TmxList<TmxTemplateGroup>();
+            foreach (var e in xMap.Elements("templategroup"))
+                TemplateGroups.Add(new TmxTemplateGroup(e, TmxDirectory));
 
             Layers = new TmxList<TmxLayer>();
             foreach (var e in xMap.Elements("layer"))
